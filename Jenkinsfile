@@ -1,4 +1,8 @@
 pipeline {
+  tools {
+    maven 'Maven'
+    jdk 'Java'
+  }
   environment {
     registryCredential = "docker"
   }
@@ -36,7 +40,7 @@ pipeline {
  //           sh 'az account set -s 1e5fc2e8-f4df-4895-9f77-00e140031cb2'
  //           sh 'az aks get-credentials --resource-group ilink --name gajacluster'
   //          sh 'kubectl apply -f sample.yaml'
-   //   }
+   //   }  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
     //}
   //}
   }
