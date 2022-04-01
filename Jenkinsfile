@@ -25,6 +25,7 @@ pipeline {
        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
           sh "docker login -u ${env.dockerhubUser} -p ${env.dockerhubPassword}"
           sh 'docker push abhaydiwan/spring-sample:latest'
+       }
       }
     }
     //stage('Deploy to ACS'){
