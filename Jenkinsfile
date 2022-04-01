@@ -17,19 +17,14 @@ pipeline {
     }
     stage(‘Load’) {
       steps{
-        script {
-          app = docker.build("abhaydiwan/simple-spring")
-        }
+        sh 'docker build -t abhaydiwan/spring-sample:latest .'
       }
     }
      stage(‘Deploy’) {
       steps{
-        script {
-          docker.withRegistry( "https://registry.hub.docker.com", registryCredential ) {
-           // dockerImage.push()
-          app.push("latest")
-          }
-        }
+       withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
+          sh "docker login -u ${env.dockerhubUser} -p ${env.dockerhubPassword}"
+          sh 'docker push abhaydiwan/spring-sample:latest'
       }
     }
     //stage('Deploy to ACS'){
