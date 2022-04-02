@@ -1,0 +1,6 @@
+   
+@Library("sample") _
+
+buildJavaApp(repo: "spring-sample") {
+    echo "Finished Build!"
+}
