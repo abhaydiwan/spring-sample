@@ -18,14 +18,14 @@ pipeline {
     }
     stage(‘Load’) {
       steps{
-        sh 'docker build -t abhaydiwan/spring-sample:latest .'
+        sh '/usr/local/bin/docker build -t abhaydiwan/spring-sample:latest .'
       }
     }
      stage(‘Deploy’) {
       steps{
        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
-          sh "docker login -u ${env.dockerhubUser} -p ${env.dockerhubPassword}"
-          sh 'docker push abhaydiwan/spring-sample:latest'
+          sh "/usr/local/bin/docker login -u ${env.dockerhubUser} -p ${env.dockerhubPassword}"
+          sh '/usr/local/bin/docker push abhaydiwan/spring-sample:latest'
        }
       }
     }
