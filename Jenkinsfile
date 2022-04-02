@@ -2,7 +2,7 @@ pipeline {
   tools {
     maven 'Maven'
     jdk 'Java'
-    docker 'docker'
+    
   }
   environment {
     registryCredential = "docker"
