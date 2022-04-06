@@ -1,0 +1,2 @@
+@Library('sample') _
+buildJavaPipeline 'https://github.com/abhaydiwan/spring-sample.git'
